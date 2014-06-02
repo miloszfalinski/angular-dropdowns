@@ -67,7 +67,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var $template, $wrap, body, tpl;
+          var $template, $wrap, body, dropdowns, tpl;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           $template = angular.element(template);
           $template.data('$dropdownMenuController', this);
@@ -83,11 +83,14 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
             });
           };
           body = $document.find("body");
+          dropdowns = $document.querySelector(".dropdown");
           body.bind("click", function() {
+            dropdowns.removeClass('active');
             tpl.removeClass('active');
           });
           $element.bind("click", function(event) {
             event.stopPropagation();
+            dropdowns.removeClass('active');
             tpl.toggleClass('active');
           });
         }
