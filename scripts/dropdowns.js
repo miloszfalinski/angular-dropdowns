@@ -72,11 +72,11 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           $template = angular.element(template);
           $template.data('$dropdownMenuController', this);
           tpl = $compile($template)($scope);
-          $overlay = angular.element("<div class='dropdown-overlay'></div>");
           $wrap = angular.element("<div class='wrap-dd-menu'></div>");
           $element.replaceWith($wrap);
           $wrap.append($element);
           $wrap.append(tpl);
+          $overlay = angular.element("<div class='dropdown-overlay'></div>");
           $overlay.prepend(tpl);
           this.select = function(selected) {
             angular.copy(selected, $scope.dropdownModel);

@@ -110,7 +110,6 @@ angular.module('ngDropdowns', [])
             $template.data('$dropdownMenuController', this)
 
             tpl = $compile($template)($scope)
-            $overlay = angular.element("<div class='dropdown-overlay'></div>")
             $wrap = angular.element("<div class='wrap-dd-menu'></div>")
 
             $element.replaceWith($wrap)
@@ -118,6 +117,7 @@ angular.module('ngDropdowns', [])
             $wrap.append($element)
             $wrap.append(tpl)
 
+            $overlay = angular.element("<div class='dropdown-overlay'></div>")
             $overlay.prepend(tpl)
 
             this.select = (selected) ->
