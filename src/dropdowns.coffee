@@ -124,7 +124,14 @@ angular.module('ngDropdowns', [])
 
             body = $document.find("body")
             dropdowns = $document.querySelector(".dropdown")
+            triggers = $document.querySelector(".dropdown-trigger")
+
             body.bind("click", () ->
+                dropdowns.removeClass('active')
+                tpl.removeClass('active')
+                return
+            )
+            triggers.bind("click", () ->
                 dropdowns.removeClass('active')
                 tpl.removeClass('active')
                 return
