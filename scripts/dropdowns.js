@@ -86,9 +86,6 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           body.bind("click", function() {
             tpl.removeClass('active');
           });
-          triggers.bind("click", function() {
-            tpl.removeClass('active');
-          });
           $element.bind("click", function(event) {
             event.stopPropagation();
             tpl.toggleClass('active');

@@ -134,11 +134,11 @@ angular.module('ngDropdowns', [])
                 tpl.removeClass('active')
                 return
             )
-            triggers.bind("click", () ->
-                # dropdowns.removeClass('active')
-                tpl.removeClass('active')
-                return
-            )
+            # triggers.bind("click", () ->
+            #     # dropdowns.removeClass('active')
+            #     tpl.removeClass('active')
+            #     return
+            # )
 
             $element.bind("click", (event) ->
                 event.stopPropagation()
