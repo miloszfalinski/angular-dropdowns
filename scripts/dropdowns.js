@@ -10,7 +10,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var body, dropdowns;
+          var body;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           this.select = function(selected) {
             angular.copy(selected, $scope.dropdownModel);
@@ -22,10 +22,8 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           body.bind("click", function() {
             $element.removeClass('active');
           });
-          dropdowns = $document.querySelector(".dropdown");
           $element.bind('click', function(event) {
             event.stopPropagation();
-            dropdowns.removeClass('active');
             $element.toggleClass('active');
           });
         }
@@ -67,7 +65,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var $overlay, $template, $wrap, body, dropdowns, tpl, triggers;
+          var $overlay, $template, $wrap, body, tpl;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           $template = angular.element(template);
           $template.data('$dropdownMenuController', this);
@@ -85,19 +83,14 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
             });
           };
           body = $document.find("body");
-          dropdowns = $document.querySelector(".dropdown");
-          triggers = $document.querySelector(".dropdown-trigger");
           body.bind("click", function() {
-            dropdowns.removeClass('active');
             tpl.removeClass('active');
           });
           triggers.bind("click", function() {
-            dropdowns.removeClass('active');
             tpl.removeClass('active');
           });
           $element.bind("click", function(event) {
             event.stopPropagation();
-            dropdowns.removeClass('active');
             tpl.toggleClass('active');
           });
         }
