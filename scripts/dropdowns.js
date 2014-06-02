@@ -10,7 +10,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var body;
+          var body, dropdowns;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           this.select = function(selected) {
             angular.copy(selected, $scope.dropdownModel);
@@ -20,6 +20,10 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           };
           body = $document.find("body");
           body.bind("click", function() {
+            $element.removeClass('active');
+          });
+          dropdowns = $document.querySelector(".dropdown");
+          dropdowns.bind('click', function() {
             $element.removeClass('active');
           });
           $element.bind('click', function(event) {
