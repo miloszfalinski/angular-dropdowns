@@ -23,11 +23,8 @@ angular.module('ngDropdowns', [])
                 return
             )
 
-            # dropdowns = $document.querySelector(".dropdown")
-
             $element.bind('click', (event) ->
                 event.stopPropagation()
-                # dropdowns.removeClass('active')
                 $element.toggleClass('active')
                 return
             )
@@ -117,32 +114,19 @@ angular.module('ngDropdowns', [])
             $wrap.append($element)
             $wrap.append(tpl)
 
-            $overlay = angular.element("<div class='dropdown-overlay'></div>")
-            $overlay.prepend(tpl)
-
             this.select = (selected) ->
                 angular.copy(selected, $scope.dropdownModel)
                 $scope.dropdownOnchange({ selected: selected })
                 return
 
             body = $document.find("body")
-            # dropdowns = $document.querySelector(".dropdown")
-            # triggers = $document.querySelector(".dropdown-trigger")
-
             body.bind("click", () ->
-                # dropdowns.removeClass('active')
                 tpl.removeClass('active')
                 return
             )
-            # triggers.bind("click", () ->
-            #     # dropdowns.removeClass('active')
-            #     tpl.removeClass('active')
-            #     return
-            # )
 
             $element.bind("click", (event) ->
                 event.stopPropagation()
-                # dropdowns.removeClass('active')
                 tpl.toggleClass('active')
                 return
             )

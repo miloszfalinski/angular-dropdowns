@@ -65,7 +65,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var $overlay, $template, $wrap, body, tpl;
+          var $template, $wrap, body, tpl;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           $template = angular.element(template);
           $template.data('$dropdownMenuController', this);
@@ -74,8 +74,6 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           $element.replaceWith($wrap);
           $wrap.append($element);
           $wrap.append(tpl);
-          $overlay = angular.element("<div class='dropdown-overlay'></div>");
-          $overlay.prepend(tpl);
           this.select = function(selected) {
             angular.copy(selected, $scope.dropdownModel);
             $scope.dropdownOnchange({
