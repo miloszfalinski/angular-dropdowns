@@ -54,7 +54,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
 ]).directive('dropdownMenu', [
   '$parse', '$compile', '$document', function($parse, $compile, $document) {
     var template;
-    template = "<ul class='dropdown'>\n    <li ng-repeat='item in dropdownMenu'\n        class='dropdown-item'\n        dropdown-item-label='labelField'\n        dropdown-menu-item='item'>\n    </li>\n</ul>";
+    template = "<div class='dropdown-overlay'></div>\n<ul class='dropdown'>\n    <li ng-repeat='item in dropdownMenu'\n        class='dropdown-item'\n        dropdown-item-label='labelField'\n        dropdown-menu-item='item'>\n    </li>\n</ul>";
     return {
       restrict: 'A',
       replace: false,

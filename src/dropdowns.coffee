@@ -80,6 +80,7 @@ angular.module('ngDropdowns', [])
 .directive('dropdownMenu', ['$parse', '$compile', '$document', ($parse, $compile, $document) ->
 
     template = """
+        <div class='dropdown-overlay'></div>
         <ul class='dropdown'>
             <li ng-repeat='item in dropdownMenu'
                 class='dropdown-item'
