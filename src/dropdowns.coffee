@@ -121,14 +121,20 @@ angular.module('ngDropdowns', [])
                 return
 
             body = $document.find("body")
+            overlay = $element.find(".dropdown-overlay")
             body.bind("click", () ->
                 tpl.removeClass('active')
                 return
             )
-
+            overlay.bind("click", () ->
+                tpl.removeClass('active')
+                overlay.removeClass('active')
+                return
+            )
             $element.bind("click", (event) ->
                 event.stopPropagation()
                 tpl.toggleClass('active')
+                overlay.toggleClass('active')
                 return
             )
 
