@@ -22,7 +22,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           body.bind("click", function() {
             $element.removeClass('active');
           });
-          dropdowns = $document.querySelector(".dropdown");
+          dropdowns = $document.querySelector(".dropdown-trigger");
           dropdowns.bind('click', function() {
             $element.removeClass('active');
           });

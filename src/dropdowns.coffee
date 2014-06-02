@@ -23,7 +23,7 @@ angular.module('ngDropdowns', [])
                 return
             )
 
-            dropdowns = $document.querySelector(".dropdown")
+            dropdowns = $document.querySelector(".dropdown-trigger")
             dropdowns.bind('click', () ->
                 $element.removeClass('active')
                 return
