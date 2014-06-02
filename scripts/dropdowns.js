@@ -30,7 +30,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           });
         }
       ],
-      template: "<div class='wrap-dd-select'>\n    <span class='selected'>{{dropdownModel[labelField]}}</span>\n    <ul class='dropdown'>\n        <li ng-repeat='item in dropdownSelect'\n            class='dropdown-item'\n            dropdown-select-item='item'\n            dropdown-item-label='labelField'>\n        </li>\n    </ul>\n</div>"
+      template: "<div class='dropdown-overlay'></div>\n<div class='wrap-dd-select'>\n    <span class='selected'>{{dropdownModel[labelField]}}</span>\n    <ul class='dropdown'>\n        <li ng-repeat='item in dropdownSelect'\n            class='dropdown-item'\n            dropdown-select-item='item'\n            dropdown-item-label='labelField'>\n        </li>\n    </ul>\n</div>"
     };
   }
 ]).directive('dropdownSelectItem', [
@@ -67,15 +67,17 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
-          var $template, $wrap, body, dropdowns, tpl, triggers;
+          var $overlay, $template, $wrap, body, dropdowns, tpl, triggers;
           $scope.labelField = $attrs.dropdownItemLabel != null ? $attrs.dropdownItemLabel : 'text';
           $template = angular.element(template);
           $template.data('$dropdownMenuController', this);
           tpl = $compile($template)($scope);
+          $overlay = angular.element("<div class='dropdown-overlay'></div>");
           $wrap = angular.element("<div class='wrap-dd-menu'></div>");
           $element.replaceWith($wrap);
           $wrap.append($element);
           $wrap.append(tpl);
+          $overlay.prepend(tpl);
           this.select = function(selected) {
             angular.copy(selected, $scope.dropdownModel);
             $scope.dropdownOnchange({

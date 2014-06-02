@@ -37,6 +37,7 @@ angular.module('ngDropdowns', [])
 
         template:
             """
+            <div class='dropdown-overlay'></div>
             <div class='wrap-dd-select'>
                 <span class='selected'>{{dropdownModel[labelField]}}</span>
                 <ul class='dropdown'>
@@ -109,13 +110,15 @@ angular.module('ngDropdowns', [])
             $template.data('$dropdownMenuController', this)
 
             tpl = $compile($template)($scope)
-
+            $overlay = angular.element("<div class='dropdown-overlay'></div>")
             $wrap = angular.element("<div class='wrap-dd-menu'></div>")
 
             $element.replaceWith($wrap)
 
             $wrap.append($element)
             $wrap.append(tpl)
+
+            $overlay.prepend(tpl)
 
             this.select = (selected) ->
                 angular.copy(selected, $scope.dropdownModel)
