@@ -161,7 +161,7 @@ angular.module('ngDropdowns', [])
 
         template: """
             <li ng-class='{divider: dropdownMenuItem.divider}'>
-                <a href='' class='dropdown-item'
+                <a href='' class='dropdown-item {{dropdownMenuItem.iconCls}}'
                     ng-if='!dropdownMenuItem.divider'
                     ng-href='{{dropdownMenuItem.href}}'
                     ng-click='selectItem()'>
