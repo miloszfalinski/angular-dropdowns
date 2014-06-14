@@ -84,14 +84,17 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           overlay = $element.find(".dropdown-overlay");
           body.bind("click", function() {
             tpl.removeClass('active');
+            $element.removeClass('active');
           });
           overlay.bind("click", function() {
             tpl.removeClass('active');
+            $element.removeClass('active');
             overlay.removeClass('active');
           });
           $element.bind("click", function(event) {
             event.stopPropagation();
             tpl.toggleClass('active');
+            $element.toggleClass('active');
             overlay.toggleClass('active');
           });
         }
