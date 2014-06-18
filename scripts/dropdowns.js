@@ -6,7 +6,8 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       scope: {
         dropdownSelect: '=',
         dropdownModel: '=',
-        dropdownOnchange: '&'
+        dropdownOnchange: '&',
+        dropdownOntoggle: '&'
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
@@ -24,6 +25,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           });
           $element.bind('click', function(event) {
             event.stopPropagation();
+            $scope.dropdownOntoggle();
             $element.toggleClass('active');
           });
         }
@@ -61,7 +63,8 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
       scope: {
         dropdownMenu: '=',
         dropdownModel: '=',
-        dropdownOnchange: '&'
+        dropdownOnchange: '&',
+        dropdownOntoggle: '&'
       },
       controller: [
         '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
@@ -95,6 +98,7 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
             event.stopPropagation();
             tpl.toggleClass('active');
             $element.toggleClass('active');
+            $scope.dropdownOntoggle();
             overlay.toggleClass('active');
           });
         }

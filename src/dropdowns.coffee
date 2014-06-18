@@ -7,6 +7,7 @@ angular.module('ngDropdowns', [])
             dropdownSelect: '='
             dropdownModel: '='
             dropdownOnchange: '&'
+            dropdownOntoggle: '&'
 
         controller: ['$scope', '$element', '$attrs', ($scope, $element, $attrs) ->
 
@@ -25,6 +26,7 @@ angular.module('ngDropdowns', [])
 
             $element.bind('click', (event) ->
                 event.stopPropagation()
+                $scope.dropdownOntoggle()
                 $element.toggleClass('active')
                 return
             )
@@ -97,6 +99,7 @@ angular.module('ngDropdowns', [])
             dropdownMenu: '='
             dropdownModel: '='
             dropdownOnchange: '&'
+            dropdownOntoggle: '&'
 
         controller: ['$scope', '$element', '$attrs', ($scope, $element, $attrs) ->
 
@@ -137,6 +140,7 @@ angular.module('ngDropdowns', [])
                 event.stopPropagation()
                 tpl.toggleClass('active')
                 $element.toggleClass('active')
+                $scope.dropdownOntoggle()
                 overlay.toggleClass('active')
                 return
             )
